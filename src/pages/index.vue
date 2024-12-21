@@ -4,4 +4,5 @@ import Button from "@/components/ui/button/Button.vue";
 <template>
 	<h1 class="text-red-600">Index page</h1>
 	<Button>Shadcn</Button>
+	<RouterLink to="/user">User</RouterLink>
 </template>
