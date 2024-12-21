@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-	<div>user</div>
+	<h1 class="text-red-400">user</h1>
 </template>
 
 <style scoped></style>
