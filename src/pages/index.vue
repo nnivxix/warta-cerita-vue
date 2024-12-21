@@ -1,8 +1,20 @@
 <script setup lang="ts">
-import Button from "@/components/ui/button/Button.vue";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 </script>
 <template>
-	<h1 class="text-red-600">Index page</h1>
-	<Button>Shadcn</Button>
-	<RouterLink to="/user">User</RouterLink>
+	<div class="flex items-center justify-center h-screen">
+		<div class="max-w-4xl flex flex-col gap-4 w-full mx-auto">
+			<h1 class="text-3xl">Hello Gaes, Welcome</h1>
+			<p>Let's share your <em> cerita </em> with us.</p>
+			<div>
+				<RouterLink
+					to="/login"
+					:class="cn(buttonVariants({ variant: 'default', size: 'lg' }))"
+				>
+					Let's get started
+				</RouterLink>
+			</div>
+		</div>
+	</div>
 </template>

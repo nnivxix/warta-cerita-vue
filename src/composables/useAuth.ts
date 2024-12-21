@@ -1,13 +1,27 @@
 import $fetch from "@/utils/$fetch";
 import { ref } from "vue";
-import { useRouter } from "vue-router";
 
-const user = ref(null);
+interface User {
+	id: number;
+	email: string;
+	name: string;
+}
+
+const user = ref<User | null>(null);
 
 export function useAuth() {
 	const fetchCurrentUser = async () => {
 		const response = await $fetch("/user");
 		user.value = response;
+	};
+
+	const login = async (credentials: { email: string; password: string }) => {
+		const response = await $fetch<{ user: User; token: string }>("/login", {
+			method: "POST",
+			body: credentials,
+		});
+		user.value = response.user;
+		localStorage.setItem("token", response.token);
 	};
 
 	const logout = async () => {
@@ -16,13 +30,12 @@ export function useAuth() {
 		});
 		user.value = null;
 		localStorage.removeItem("token");
-
-		// await useRouter().push("/login");
 	};
 
 	return {
 		user,
 		fetchCurrentUser,
 		logout,
+		login,
 	};
 }
