@@ -12,7 +12,9 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div>
-		<RouterView />
-	</div>
+	<Suspense>
+		<div>
+			<RouterView />
+		</div>
+	</Suspense>
 </template>
